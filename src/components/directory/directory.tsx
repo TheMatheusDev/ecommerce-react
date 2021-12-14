@@ -23,35 +23,35 @@ const state = {
       linkUrl: 'shop/sneakers',
     },
     {
-      title: 'womens',
+      title: 'women',
       imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
       size: 'large',
       id: 4,
-      linkUrl: 'shop/womens',
+      linkUrl: 'shop/women',
     },
     {
-      title: 'mens',
+      title: 'men',
       imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
       size: 'large',
       id: 5,
-      linkUrl: 'shop/mens',
+      linkUrl: 'shop/men',
     },
   ],
 };
 
-export interface IState {
+export type MenuItemProps = {
   title: string;
   imageUrl: string;
   id?: number;
   size?: string;
   linkUrl: string;
-}
+};
 
 const Directory = () => {
-  const [section, setSection] = useState(state);
+  const [menuItemState, setMenuItemState] = useState(state);
   return (
     <div className="directory-menu">
-      {section.sections.map(({ title, imageUrl, id, linkUrl, size }) => (
+      {menuItemState.sections.map(({ title, imageUrl, id, linkUrl, size }) => (
         <MenuItem title={title} imageUrl={imageUrl} key={id} linkUrl={linkUrl} size={size} />
       ))}
     </div>

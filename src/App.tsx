@@ -1,11 +1,11 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './App.scss';
 import Homepage from './pages/Homepage/Homepage';
 
-function App() {
-  return (
-    <div>
-      <Homepage />
-    </div>
-  );
-}
-
-export default App;
+ReactDOM.render(
+  <React.StrictMode>
+    <Homepage />
+  </React.StrictMode>,
+  document.getElementById('root'),
+);
