@@ -51,8 +51,8 @@ const Directory = () => {
   const [menuItemState, setMenuItemState] = useState(state);
   return (
     <div className="directory-menu">
-      {menuItemState.sections.map(({ title, imageUrl, id, linkUrl, size }) => (
-        <MenuItem title={title} imageUrl={imageUrl} key={id} linkUrl={linkUrl} size={size} />
+      {menuItemState.sections.map(({ id, ...sectionsProps }) => (
+        <MenuItem key={id} {...sectionsProps} />
       ))}
     </div>
   );
