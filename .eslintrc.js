@@ -22,6 +22,9 @@ module.exports = {
   rules: {
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
+    'prettier/prettier': 'error',
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
 };
