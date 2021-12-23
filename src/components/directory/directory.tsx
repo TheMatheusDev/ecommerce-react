@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import MenuItem from '../menu-item/menu-item';
 import './directory.scss';
 
@@ -47,7 +47,7 @@ export type MenuItemProps = {
   linkUrl: string;
 };
 
-const Directory = () => {
+const Directory: FC = () => {
   const [menuItemState, setMenuItemState] = useState(state);
   return (
     <div className="directory-menu">

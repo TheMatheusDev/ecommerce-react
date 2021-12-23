@@ -1,5 +1,6 @@
 import './collection-preview.scss';
 import CollectionItem from '../collection-item/collection-item';
+import { FC } from 'react';
 
 export interface IITems {
   id?: number;
@@ -14,7 +15,7 @@ interface IProps {
   items: IITems[];
 }
 
-const CollectionPreview = ({ title, items }: IProps) => {
+const CollectionPreview: FC<IProps> = ({ title, items }) => {
   return (
     <div className="collection-preview">
       <h1 className="title">{title.toUpperCase()}</h1>

@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MenuItemProps } from '../directory/directory';
 import './menu-item.scss';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl }: MenuItemProps) => {
+const MenuItem: FC<MenuItemProps> = ({ title, imageUrl, size, linkUrl }) => {
   const navigate = useNavigate();
   return (
     <div className={`${size} menu-item`} onClick={() => navigate(`${linkUrl}`)}>

@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import CollectionPreview from '../../components/collection-preview/collection-preview';
-import ShopData from './shop.data';
+import ShopData from './Shop.data';
 
-const ShopPage = () => {
+const ShopPage: FC = () => {
   return (
     <div className="shop-page">
       {ShopData.map(({ id, ...otherCollectionProps }) => (

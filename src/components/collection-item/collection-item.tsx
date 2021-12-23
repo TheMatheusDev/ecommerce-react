@@ -1,7 +1,8 @@
 import './collection-item.scss';
 import { IITems } from '../collection-preview/collection-preview';
+import { FC } from 'react';
 
-const CollectionItem = ({ name, price, imageUrl }: IITems) => {
+const CollectionItem: FC<IITems> = ({ name, price, imageUrl }) => {
   return (
     <div className="collection-item">
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
