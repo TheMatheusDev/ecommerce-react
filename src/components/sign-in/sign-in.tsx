@@ -66,7 +66,7 @@ const SignIn: FC = () => {
           <CustomButton type="submit" isGoogleSignIn={false}>
             SIGN IN
           </CustomButton>
-          <CustomButton signIn={signInWithGoogle} isGoogleSignIn={true}>
+          <CustomButton type="button" signIn={signInWithGoogle} isGoogleSignIn={true}>
             Sign in with Google
           </CustomButton>
         </div>
