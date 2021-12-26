@@ -1,4 +1,3 @@
-import { UserCredential } from 'firebase/auth';
 import { ButtonHTMLAttributes, FC, HTMLProps, MouseEvent, MouseEventHandler } from 'react';
 import './custom-button.scss';
 

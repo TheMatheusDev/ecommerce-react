@@ -12,7 +12,7 @@ interface IProps {
 
 const FormInput: FC<IProps> = ({ name, handleChange, label, value, type }) => (
   <div className="group">
-    <input type={type} onChange={handleChange} name={name} className="form-input" />
+    <input type={type} onChange={handleChange} name={name} value={value} className="form-input" />
     {label ? <label className={`${value.length ? 'shrink' : ''} form-input-label`}>{label}</label> : null}
   </div>
 );

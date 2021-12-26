@@ -2,11 +2,11 @@ import './header.scss';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/084 crown.svg';
 import { FC } from 'react';
-import { User } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.utils';
+import { UserWithId } from '../../App';
 
 interface IProps {
-  currentUser: User | null;
+  currentUser: UserWithId | null;
 }
 
 const Header: FC<IProps> = ({ currentUser }) => (
@@ -23,7 +23,7 @@ const Header: FC<IProps> = ({ currentUser }) => (
       </Link>
       {currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
-          SIGN OUT
+          SIGN OUT {currentUser.displayName}
         </div>
       ) : (
         <Link className="option" to="/signin">

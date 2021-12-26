@@ -5,17 +5,41 @@ import Homepage from './pages/Homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
 import Header from './components/header/header';
 import LoginRegister from './pages/Login-register/Login-register';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDoc, db } from './firebase/firebase.utils';
+import { doc, onSnapshot } from 'firebase/firestore';
 import './App.scss';
-import { User } from 'firebase/auth';
+
+export interface UserWithId {
+  id: string;
+  displayName: string;
+  email: string;
+  createdAt: string;
+}
 
 const App: FC = () => {
-  let [currentUser, setCurrentUser] = useState<User | null>(null);
+  let [currentUser, setCurrentUser] = useState<UserWithId | null>(null);
   let unsubscribeFromAuth: any = null;
 
   useEffect(() => {
-    unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
+    unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth?.displayName) {
+        await createUserProfileDoc(userAuth);
+        const userRef = doc(db, `users/${userAuth.uid}`);
+
+        onSnapshot(userRef, (snapshot) => {
+          let userData = snapshot.data();
+          if (userData instanceof Object) {
+            setCurrentUser({
+              id: snapshot.id,
+              displayName: userData.displayName,
+              email: userData.email,
+              createdAt: userData.createdAt,
+            });
+          } else {
+            setCurrentUser(null);
+          }
+        });
+      }
     });
 
     return () => {

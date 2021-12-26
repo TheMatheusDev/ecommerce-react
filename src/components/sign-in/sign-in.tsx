@@ -1,8 +1,8 @@
 import { FormEvent, ChangeEvent, useState, FC } from 'react';
 import CustomButton from '../custom-button/custom-button';
 import FormInput from '../form-input/form-input';
-import './sign-in.scss';
 import { signInWithGoogle } from '../../firebase/firebase.utils';
+import './sign-in.scss';
 
 const SignIn: FC = () => {
   const [email, setEmail] = useState('');
