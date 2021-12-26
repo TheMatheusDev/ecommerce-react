@@ -36,7 +36,10 @@ const createUserProfileDoc = async (userAuth: User | null) => {
   const userRef: DocumentReference<DocumentData> = doc(db, `users/${userAuth.uid}`);
   const snapShot = await getDoc(userRef);
   if (!snapShot.exists()) {
-    const { displayName, email } = userAuth;
+    let { displayName, email } = userAuth;
+    if (displayName != undefined && displayName != null) {
+      displayName = displayName.trim();
+    }
     const createdAt = new Date().toLocaleDateString('pt-BR');
 
     try {

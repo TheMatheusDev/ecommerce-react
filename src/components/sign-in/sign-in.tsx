@@ -1,15 +1,37 @@
 import { FormEvent, ChangeEvent, useState, FC } from 'react';
 import CustomButton from '../custom-button/custom-button';
 import FormInput from '../form-input/form-input';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import './sign-in.scss';
+import { FirebaseError } from 'firebase/app';
 
 const SignIn: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    try {
+      await signOut(auth);
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        if (error.code === 'auth/wrong-password') {
+          alert('Wrong password.');
+        } else if (error.code === 'auth/user-not-found') {
+          alert('An user account with this email does not exist.');
+        } else if (error.code === 'auth/internal-error') {
+          alert('You must enter a password.');
+        } else if (error.code === 'auth/invalid-email') {
+          alert('You must enter a valid email.');
+        } else {
+          console.log(error);
+        }
+      }
+    }
+
     setEmail('');
     setPassword('');
   };

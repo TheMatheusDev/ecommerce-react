@@ -50,7 +50,7 @@ const SignUp: FC = () => {
 
     try {
       const { user } = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(user, { displayName: displayName });
+      await updateProfile(user, { displayName: displayName.trim() });
 
       await createUserProfileDoc(user);
       setState({ displayName: '', email: '', password: '', confirmPassword: '' });
