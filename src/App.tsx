@@ -18,7 +18,7 @@ export interface UserWithId {
 
 const App: FC = () => {
   let [currentUser, setCurrentUser] = useState<UserWithId | null>(null);
-  let unsubscribeFromAuth: any = null;
+  let unsubscribeFromAuth: any;
 
   useEffect(() => {
     unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
@@ -35,10 +35,10 @@ const App: FC = () => {
               email: userData.email,
               createdAt: userData.createdAt,
             });
-          } else {
-            setCurrentUser(null);
           }
         });
+      } else {
+        setCurrentUser(null);
       }
     });
 
