@@ -1,12 +1,12 @@
 import { FC, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { auth, createUserProfileDoc, db } from './firebase/firebase.utils';
 import { doc, onSnapshot } from 'firebase/firestore';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import Homepage from './pages/Homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
-import Header from './components/header/header';
+import Header, { IState } from './components/header/header';
 import LoginRegister from './pages/Login-register/Login-register';
 import './App.scss';
 
@@ -19,6 +19,7 @@ export interface UserWithId {
 
 const App: FC = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state: IState) => state.user.currentUser);
   let unsubscribeFromAuth: any;
 
   useEffect(() => {
@@ -55,7 +56,7 @@ const App: FC = () => {
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/shop" element={<ShopPage />}></Route>
-        <Route path="/signin" element={<LoginRegister />}></Route>
+        <Route path="/signin" element={currentUser ? <Navigate replace to="/" /> : <LoginRegister />}></Route>
       </Routes>
     </>
   );

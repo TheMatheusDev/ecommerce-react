@@ -1,5 +1,6 @@
 import { AnyAction } from 'redux';
 import { UserWithId } from '../../App';
+import { UserActionTypes } from './user.types';
 
 interface IDefaultState {
   currentUser: UserWithId | null;
@@ -11,7 +12,7 @@ const INITIAL_STATE = {
 
 const userReducer = (state: IDefaultState = INITIAL_STATE, action: AnyAction): IDefaultState => {
   switch (action.type) {
-    case 'SET_CURRENT_USER':
+    case UserActionTypes.SET_CURRENT_USER:
       return {
         ...state,
         currentUser: action.payload,

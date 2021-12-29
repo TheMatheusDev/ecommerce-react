@@ -6,7 +6,7 @@ import { auth } from '../../firebase/firebase.utils';
 import { UserWithId } from '../../App';
 import { connect, DefaultRootState, useSelector } from 'react-redux';
 
-interface IState {
+export interface IState {
   user: {
     currentUser: UserWithId | null;
   };
