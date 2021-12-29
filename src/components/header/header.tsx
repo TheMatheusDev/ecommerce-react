@@ -4,34 +4,41 @@ import { ReactComponent as Logo } from '../../assets/084 crown.svg';
 import { FC } from 'react';
 import { auth } from '../../firebase/firebase.utils';
 import { UserWithId } from '../../App';
+import { connect, DefaultRootState, useSelector } from 'react-redux';
 
-interface IProps {
-  currentUser: UserWithId | null;
+interface IState {
+  user: {
+    currentUser: UserWithId | null;
+  };
 }
 
-const Header: FC<IProps> = ({ currentUser }) => (
-  <header className="header">
-    <Link className="logo-container" to="/">
-      <Logo className="logo" />
-    </Link>
-    <nav className="options">
-      <Link className="option" to="/shop">
-        SHOP
+const Header: FC = () => {
+  const currentUser = useSelector((state: IState) => state.user.currentUser);
+
+  return (
+    <header className="header">
+      <Link className="logo-container" to="/">
+        <Logo className="logo" />
       </Link>
-      <Link className="option" to="/contact">
-        CONTACT
-      </Link>
-      {currentUser ? (
-        <div className="option" onClick={() => auth.signOut()}>
-          SIGN OUT {currentUser.displayName}
-        </div>
-      ) : (
-        <Link className="option" to="/signin">
-          SIGN IN
+      <nav className="options">
+        <Link className="option" to="/shop">
+          SHOP
         </Link>
-      )}
-    </nav>
-  </header>
-);
+        <Link className="option" to="/contact">
+          CONTACT
+        </Link>
+        {currentUser ? (
+          <div className="option" onClick={() => auth.signOut()}>
+            SIGN OUT {currentUser.displayName}
+          </div>
+        ) : (
+          <Link className="option" to="/signin">
+            SIGN IN
+          </Link>
+        )}
+      </nav>
+    </header>
+  );
+};
 
 export default Header;

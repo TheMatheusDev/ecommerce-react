@@ -1,12 +1,13 @@
-import React, { FC, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { auth, createUserProfileDoc, db } from './firebase/firebase.utils';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
 import Homepage from './pages/Homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
 import Header from './components/header/header';
 import LoginRegister from './pages/Login-register/Login-register';
-import { auth, createUserProfileDoc, db } from './firebase/firebase.utils';
-import { doc, onSnapshot } from 'firebase/firestore';
 import './App.scss';
 
 export interface UserWithId {
@@ -17,7 +18,7 @@ export interface UserWithId {
 }
 
 const App: FC = () => {
-  let [currentUser, setCurrentUser] = useState<UserWithId | null>(null);
+  const dispatch = useDispatch();
   let unsubscribeFromAuth: any;
 
   useEffect(() => {
@@ -29,16 +30,17 @@ const App: FC = () => {
         onSnapshot(userRef, (snapshot) => {
           let userData = snapshot.data();
           if (userData instanceof Object) {
-            setCurrentUser({
+            let user = {
               id: snapshot.id,
               displayName: userData.displayName,
               email: userData.email,
               createdAt: userData.createdAt,
-            });
+            };
+            dispatch(setCurrentUser(user));
           }
         });
       } else {
-        setCurrentUser(null);
+        dispatch(setCurrentUser(null));
       }
     });
 
@@ -48,16 +50,15 @@ const App: FC = () => {
   }, []);
 
   return (
-    <React.StrictMode>
-      <BrowserRouter>
-        <Header currentUser={currentUser} />
-        <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/shop" element={<ShopPage />}></Route>
-          <Route path="/signin" element={<LoginRegister />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </React.StrictMode>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/shop" element={<ShopPage />}></Route>
+        <Route path="/signin" element={<LoginRegister />}></Route>
+      </Routes>
+    </>
   );
 };
-ReactDOM.render(<App />, document.getElementById('root'));
+
+export default App;
