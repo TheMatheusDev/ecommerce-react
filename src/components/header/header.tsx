@@ -1,19 +1,25 @@
-import './header.scss';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/084 crown.svg';
+import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { FC } from 'react';
 import { auth } from '../../firebase/firebase.utils';
 import { UserWithId } from '../../App';
-import { connect, DefaultRootState, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import CartIcon from '../cart-icon/cart-icon';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
+import './header.scss';
 
 export interface IState {
   user: {
     currentUser: UserWithId | null;
   };
+  cart: {
+    hidden: boolean;
+  };
 }
 
 const Header: FC = () => {
-  const currentUser = useSelector((state: IState) => state.user.currentUser);
+  const currentUser = useSelector(({ user: { currentUser } }: IState) => currentUser);
+  const currentHidden = useSelector(({ cart: { hidden } }: IState) => hidden);
 
   return (
     <header className="header">
@@ -36,7 +42,9 @@ const Header: FC = () => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </nav>
+      {currentHidden ? null : <CartDropdown />}
     </header>
   );
 };
