@@ -1,8 +1,7 @@
-import { AnyAction } from 'redux';
 import { UserWithId } from '../../App';
-import { UserActionTypes } from './user.types';
+import { UserActionTypes, IUserAction } from './user.types';
 
-export const setCurrentUser = (user: UserWithId | null): AnyAction => ({
+export const setCurrentUser = (user: UserWithId | null): IUserAction => ({
   type: UserActionTypes.SET_CURRENT_USER,
   payload: user,
 });

@@ -1,8 +1,7 @@
-import { AnyAction } from 'redux';
 import { UserWithId } from '../../App';
-import { UserActionTypes } from './user.types';
+import { UserActionTypes, IUserAction } from './user.types';
 
-interface IDefaultState {
+interface IState {
   currentUser: UserWithId | null;
 }
 
@@ -10,7 +9,7 @@ const INITIAL_STATE = {
   currentUser: null,
 };
 
-const userReducer = (state: IDefaultState = INITIAL_STATE, action: AnyAction): IDefaultState => {
+const userReducer = (state = INITIAL_STATE, action: IUserAction): IState => {
   switch (action.type) {
     case UserActionTypes.SET_CURRENT_USER:
       return {

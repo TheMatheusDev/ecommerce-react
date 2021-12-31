@@ -19,9 +19,9 @@ export interface UserWithId {
 
 const App: FC = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state: IState) => state.user.currentUser);
-  let unsubscribeFromAuth: any;
+  const currentUser = useSelector(({ user: { currentUser } }: IState) => currentUser);
 
+  let unsubscribeFromAuth: any;
   useEffect(() => {
     unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth?.displayName) {
