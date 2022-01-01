@@ -1,13 +1,18 @@
-import { ButtonHTMLAttributes, FC, HTMLProps, MouseEvent, MouseEventHandler } from 'react';
+import { ButtonHTMLAttributes, FC, MouseEventHandler } from 'react';
 import './custom-button.scss';
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isGoogleSignIn: boolean;
-  signIn?: MouseEventHandler<HTMLButtonElement>;
+  isGoogleSignIn?: boolean;
+  inverted?: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const CustomButton: FC<IProps> = ({ children, isGoogleSignIn, type, signIn }) => (
-  <button className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`} type={type} onClick={signIn}>
+const CustomButton: FC<IProps> = ({ children, isGoogleSignIn, inverted, type, onClick }) => (
+  <button
+    className={`${inverted ? 'inverted' : ''} ${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
+    type={type}
+    onClick={onClick}
+  >
     {children}
   </button>
 );

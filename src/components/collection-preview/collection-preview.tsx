@@ -2,17 +2,18 @@ import './collection-preview.scss';
 import CollectionItem from '../collection-item/collection-item';
 import { FC } from 'react';
 
-export interface IITems {
+export interface IItem {
   id?: number;
   key?: number;
   name: string;
   imageUrl: string;
   price: number;
+  quantity: number;
 }
 
 interface IProps {
   title: string;
-  items: IITems[];
+  items: IItem[];
 }
 
 const CollectionPreview: FC<IProps> = ({ title, items }) => {
@@ -22,8 +23,8 @@ const CollectionPreview: FC<IProps> = ({ title, items }) => {
       <div className="preview">
         {items
           .filter((item, index) => index < 4)
-          .map(({ id, ...otherItemProps }) => (
-            <CollectionItem key={id} {...otherItemProps} />
+          .map((item) => (
+            <CollectionItem key={item.id} {...item} />
           ))}
       </div>
     </div>

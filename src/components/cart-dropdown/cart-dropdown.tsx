@@ -6,7 +6,7 @@ const CartDropdown: FC = () => {
   return (
     <div className="cart-dropdown">
       <div className="cart-items"></div>
-      <CustomButton isGoogleSignIn={false}>GO TO CHECKOUT</CustomButton>
+      <CustomButton>GO TO CHECKOUT</CustomButton>
     </div>
   );
 };

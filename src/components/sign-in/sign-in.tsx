@@ -63,10 +63,8 @@ const SignIn: FC = () => {
           required={true}
         />
         <div className="buttons">
-          <CustomButton type="submit" isGoogleSignIn={false}>
-            SIGN IN
-          </CustomButton>
-          <CustomButton type="button" signIn={signInWithGoogle} isGoogleSignIn={true}>
+          <CustomButton type="submit">SIGN IN</CustomButton>
+          <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn={true}>
             Sign in with Google
           </CustomButton>
         </div>

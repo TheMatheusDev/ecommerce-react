@@ -91,9 +91,7 @@ const SignUp: FC = () => {
           label="Confirm Password"
           required={true}
         />
-        <CustomButton type="submit" isGoogleSignIn={false}>
-          SIGN UP
-        </CustomButton>
+        <CustomButton type="submit">SIGN UP</CustomButton>
       </form>
     </div>
   );
