@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
 import './header.scss';
+import { IItem } from '../collection-preview/collection-preview';
 
 export interface IState {
   user: {
@@ -14,6 +15,7 @@ export interface IState {
   };
   cart: {
     hidden: boolean;
+    cartItems: IItem[];
   };
 }
 
