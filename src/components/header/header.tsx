@@ -4,10 +4,12 @@ import { FC } from 'react';
 import { auth } from '../../firebase/firebase.utils';
 import { UserWithId } from '../../App';
 import { useSelector } from 'react-redux';
+import { IItem } from '../collection-preview/collection-preview';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selector';
 import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
 import './header.scss';
-import { IItem } from '../collection-preview/collection-preview';
 
 export interface IState {
   user: {
@@ -20,8 +22,8 @@ export interface IState {
 }
 
 const Header: FC = () => {
-  const currentUser = useSelector(({ user: { currentUser } }: IState) => currentUser);
-  const currentHidden = useSelector(({ cart: { hidden } }: IState) => hidden);
+  const currentUser = useSelector(selectCurrentUser);
+  const currentHidden = useSelector(selectCartHidden);
 
   return (
     <header className="header">
