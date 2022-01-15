@@ -2,24 +2,12 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { FC } from 'react';
 import { auth } from '../../firebase/firebase.utils';
-import { UserWithId } from '../../App';
 import { useSelector } from 'react-redux';
-import { IItem } from '../collection-preview/collection-preview';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
 import './header.scss';
-
-export interface IState {
-  user: {
-    currentUser: UserWithId | null;
-  };
-  cart: {
-    hidden: boolean;
-    cartItems: IItem[];
-  };
-}
 
 const Header: FC = () => {
   const currentUser = useSelector(selectCurrentUser);

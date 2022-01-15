@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import CustomButton from '../custom-button/custom-button';
-import './collection-item.scss';
 import { useDispatch } from 'react-redux';
-import { IItem } from '../collection-preview/collection-preview';
 import { addItem } from '../../redux/cart/cart.actions';
+import { IItem } from '../../interfaces';
+import './collection-item.scss';
 
 const CollectionItem: FC<IItem> = (item) => {
   const { imageUrl, price, name } = item;

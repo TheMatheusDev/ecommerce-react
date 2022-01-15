@@ -4,22 +4,16 @@ import { auth, createUserProfileDoc, db } from './firebase/firebase.utils';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selector';
 import Homepage from './pages/Homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
-import Header, { IState } from './components/header/header';
+import Header from './components/header/header';
 import LoginRegister from './pages/Login-register/Login-register';
 import './App.scss';
 
-export interface UserWithId {
-  id: string;
-  displayName: string;
-  email: string;
-  createdAt: string;
-}
-
 const App: FC = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector(({ user: { currentUser } }: IState) => currentUser);
+  const currentUser = useSelector(selectCurrentUser);
 
   let unsubscribeFromAuth: any;
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { IState } from '../../components/header/header';
+import { IState } from '../../interfaces';
 
 const selectCart = (state: IState) => state.cart;
 

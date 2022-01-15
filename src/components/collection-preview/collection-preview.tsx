@@ -1,15 +1,7 @@
-import './collection-preview.scss';
-import CollectionItem from '../collection-item/collection-item';
 import { FC } from 'react';
-
-export interface IItem {
-  id?: number;
-  key?: number;
-  name: string;
-  imageUrl: string;
-  price: number;
-  quantity: number;
-}
+import { IItem } from '../../interfaces';
+import CollectionItem from '../collection-item/collection-item';
+import './collection-preview.scss';
 
 interface IProps {
   title: string;

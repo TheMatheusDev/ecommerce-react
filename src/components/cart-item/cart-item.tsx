@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IItem } from '../collection-preview/collection-preview';
+import { IItem } from '../../interfaces';
 import './cart-item.scss';
 
 const CartItem: FC<IItem> = ({ imageUrl, price, name, quantity }) => (
