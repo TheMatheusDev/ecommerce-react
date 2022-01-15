@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@types/redux-logger": "^3.0.9",
-    "firebase": "^9.6.2",
+    "firebase": "^9.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -27,9 +27,9 @@
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.28.0",
-    "sass": "^1.47.0",
+    "sass": "^1.48.0",
     "typescript": "^4.5.4",
-    "vite": "^2.7.10",
-    "vite-plugin-svgr": "^0.6.0"
+    "vite": "^2.7.12",
+    "vite-plugin-svgr": "^1.0.1"
   }
 }
