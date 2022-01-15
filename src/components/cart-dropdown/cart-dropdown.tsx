@@ -1,16 +1,12 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { IState } from '../header/header';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 import CartItem from '../cart-item/cart-item';
 import CustomButton from '../custom-button/custom-button';
 import './cart-dropdown.scss';
-import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 const CartDropdown: FC = () => {
-  const state = useSelector((state: IState) => state);
-  const cartItems = selectCartItems(state);
-
-  /* const cartItems = useSelector(({ cart: { cartItems } }: IState) => cartItems, isEqual); */
+  const cartItems = useSelector(selectCartItems);
 
   return (
     <div className="cart-dropdown">
