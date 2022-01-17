@@ -10,6 +10,7 @@ import ShopPage from './pages/Shop/Shop';
 import Header from './components/header/header';
 import LoginRegister from './pages/Login-register/Login-register';
 import './App.scss';
+import CheckoutPage from './pages/Checkout/Checkout';
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const App: FC = () => {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/shop" element={<ShopPage />}></Route>
         <Route path="/signin" element={currentUser ? <Navigate replace to="/" /> : <LoginRegister />}></Route>
+        <Route path="/checkout" element={<CheckoutPage />}></Route>
       </Routes>
     </>
   );
