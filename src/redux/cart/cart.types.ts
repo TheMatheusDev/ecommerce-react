@@ -1,4 +1,4 @@
-import { IItem } from '../../components/collection-preview/collection-preview';
+import { IItem } from '../../interfaces';
 
 export interface ICartAction {
   type: string;

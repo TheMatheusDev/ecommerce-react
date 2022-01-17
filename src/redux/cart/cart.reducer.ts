@@ -1,4 +1,4 @@
-import { IItem } from '../../components/collection-preview/collection-preview';
+import { IItem } from '../../interfaces';
 import { CartActionTypes, ICartAction } from './cart.types';
 import { addItemToCart } from './cart.utils';
 

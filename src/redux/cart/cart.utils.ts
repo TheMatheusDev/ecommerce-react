@@ -1,4 +1,4 @@
-import { IItem } from '../../components/collection-preview/collection-preview';
+import { IItem } from '../../interfaces';
 
 export const addItemToCart = (cartItems: IItem[], cartItemToAdd: IItem) => {
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToAdd.id);
