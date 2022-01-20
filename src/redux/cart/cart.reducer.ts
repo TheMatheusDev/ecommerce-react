@@ -1,11 +1,16 @@
-import { IStateCartReducer } from '../../interfaces';
+import { IItem } from '../../interfaces';
 import { CartActionTypes, ICartAction } from './cart.types';
-import { addItemToCart, removeItemFromCart } from './cart.utils';
+import { addItem, clearItem, removeItem } from './cart.utils';
 
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
 };
+
+interface IStateCartReducer {
+  hidden: boolean;
+  cartItems: IItem[];
+}
 
 const cartReducer = (state: IStateCartReducer = INITIAL_STATE, action: ICartAction) => {
   switch (action.type) {
@@ -21,7 +26,7 @@ const cartReducer = (state: IStateCartReducer = INITIAL_STATE, action: ICartActi
       if (action.payload) {
         return {
           ...state,
-          cartItems: addItemToCart(state.cartItems, action.payload),
+          cartItems: addItem(state.cartItems, action.payload),
         };
       }
 
@@ -29,7 +34,15 @@ const cartReducer = (state: IStateCartReducer = INITIAL_STATE, action: ICartActi
       if (action.payload) {
         return {
           ...state,
-          cartItems: removeItemFromCart(state, action),
+          cartItems: removeItem(state.cartItems, action.payload),
+        };
+      }
+
+    case CartActionTypes.CLEAR_ITEM:
+      if (action.payload) {
+        return {
+          ...state,
+          cartItems: clearItem(state.cartItems, action.payload),
         };
       }
 

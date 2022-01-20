@@ -23,8 +23,3 @@ export interface IState {
     cartItems: IItem[];
   };
 }
-
-export interface IStateCartReducer {
-  hidden: boolean;
-  cartItems: IItem[];
-}

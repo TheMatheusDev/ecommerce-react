@@ -1,7 +1,6 @@
-import { IItem, IStateCartReducer } from '../../interfaces';
-import { ICartAction } from './cart.types';
+import { IItem } from '../../interfaces';
 
-const addItemToCart = (cartItems: IItem[], cartItemToAdd: IItem) => {
+const addItem = (cartItems: IItem[], cartItemToAdd: IItem) => {
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToAdd.id);
 
   if (existingCartItem) {
@@ -9,11 +8,22 @@ const addItemToCart = (cartItems: IItem[], cartItemToAdd: IItem) => {
       cartItem.id === cartItemToAdd.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem,
     );
   }
-
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
 
-const removeItemFromCart = (state: IStateCartReducer, action: ICartAction) =>
-  state.cartItems.filter((cartItem) => cartItem.id !== action.payload?.id);
+const removeItem = (cartItems: IItem[], cartItemToRemove: IItem) => {
+  const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToRemove.id);
 
-export { addItemToCart, removeItemFromCart };
+  if (existingCartItem?.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
+  }
+
+  return cartItems.map((cartItem) =>
+    cartItem.id === cartItemToRemove.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem,
+  );
+};
+
+const clearItem = (cartItems: IItem[], cartItemToClear: IItem) =>
+  cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
+
+export { addItem, removeItem, clearItem };

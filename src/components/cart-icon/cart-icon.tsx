@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import { toggleCartHiddenAction } from '../../redux/cart/cart.actions';
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 import './cart-icon.scss';
 
@@ -10,7 +10,7 @@ const CartIcon: FC = () => {
   const cartQuantity = useSelector(selectCartItemsCount);
 
   return (
-    <div className="cart-icon" onClick={() => dispatch(toggleCartHidden())}>
+    <div className="cart-icon" onClick={() => dispatch(toggleCartHiddenAction())}>
       <ShoppingIcon className="shopping-icon" />
       <span className="item-count">{cartQuantity}</span>
     </div>

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import { toggleCartHiddenAction } from '../../redux/cart/cart.actions';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import CartItem from '../cart-item/cart-item';
 import CustomButton from '../custom-button/custom-button';
@@ -24,7 +24,7 @@ const CartDropdown: FC = () => {
       <CustomButton
         onClick={() => {
           navigate('/checkout');
-          dispatch(toggleCartHidden());
+          dispatch(toggleCartHiddenAction());
         }}
       >
         GO TO CHECKOUT

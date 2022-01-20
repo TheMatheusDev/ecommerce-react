@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import CustomButton from '../custom-button/custom-button';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../../redux/cart/cart.actions';
+import { addItemAction } from '../../redux/cart/cart.actions';
 import { IItem } from '../../interfaces';
 import './collection-item.scss';
 
@@ -16,7 +16,7 @@ const CollectionItem: FC<IItem> = (item) => {
         <span className="name">{name}</span>
         <span className="price">${price}</span>
       </div>
-      <CustomButton onClick={() => dispatch(addItem(item))} inverted>
+      <CustomButton onClick={() => dispatch(addItemAction(item))} inverted>
         Add to cart
       </CustomButton>
     </div>
