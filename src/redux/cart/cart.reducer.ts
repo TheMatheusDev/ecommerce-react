@@ -1,18 +1,13 @@
-import { IItem } from '../../interfaces';
+import { IStateCartReducer } from '../../interfaces';
 import { CartActionTypes, ICartAction } from './cart.types';
-import { addItemToCart } from './cart.utils';
-
-interface IState {
-  hidden: boolean;
-  cartItems: IItem[];
-}
+import { addItemToCart, removeItemFromCart } from './cart.utils';
 
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
 };
 
-const cartReducer = (state: IState = INITIAL_STATE, action: ICartAction) => {
+const cartReducer = (state: IStateCartReducer = INITIAL_STATE, action: ICartAction) => {
   switch (action.type) {
     case CartActionTypes.TOGGLE_CART_HIDDEN:
       return {
@@ -27,6 +22,14 @@ const cartReducer = (state: IState = INITIAL_STATE, action: ICartAction) => {
         return {
           ...state,
           cartItems: addItemToCart(state.cartItems, action.payload),
+        };
+      }
+
+    case CartActionTypes.REMOVE_ITEM:
+      if (action.payload) {
+        return {
+          ...state,
+          cartItems: removeItemFromCart(state, action),
         };
       }
 

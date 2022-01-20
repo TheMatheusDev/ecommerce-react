@@ -1,6 +1,7 @@
-import { IItem } from '../../interfaces';
+import { IItem, IStateCartReducer } from '../../interfaces';
+import { ICartAction } from './cart.types';
 
-export const addItemToCart = (cartItems: IItem[], cartItemToAdd: IItem) => {
+const addItemToCart = (cartItems: IItem[], cartItemToAdd: IItem) => {
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToAdd.id);
 
   if (existingCartItem) {
@@ -11,3 +12,8 @@ export const addItemToCart = (cartItems: IItem[], cartItemToAdd: IItem) => {
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+const removeItemFromCart = (state: IStateCartReducer, action: ICartAction) =>
+  state.cartItems.filter((cartItem) => cartItem.id !== action.payload?.id);
+
+export { addItemToCart, removeItemFromCart };
