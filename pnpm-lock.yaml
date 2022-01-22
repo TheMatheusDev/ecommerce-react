@@ -4,6 +4,7 @@ specifiers:
   '@types/react': ^17.0.38
   '@types/react-dom': ^17.0.11
   '@types/redux-logger': ^3.0.9
+  '@types/redux-persist': ^4.3.1
   '@typescript-eslint/eslint-plugin': ^5.10.0
   '@typescript-eslint/parser': ^5.10.0
   '@vitejs/plugin-react': ^1.1.4
@@ -18,6 +19,7 @@ specifiers:
   redux: ^4.1.2
   redux-devtools-extension: ^2.13.9
   redux-logger: ^3.0.6
+  redux-persist: ^6.0.0
   reselect: ^4.1.5
   sass: ^1.49.0
   typescript: ^4.5.5
@@ -34,11 +36,13 @@ dependencies:
   redux: 4.1.2
   redux-devtools-extension: 2.13.9_redux@4.1.2
   redux-logger: 3.0.6
+  redux-persist: 6.0.0_redux@4.1.2
   reselect: 4.1.5
 
 devDependencies:
   '@types/react': 17.0.38
   '@types/react-dom': 17.0.11
+  '@types/redux-persist': 4.3.1_redux@4.1.2
   '@typescript-eslint/eslint-plugin': 5.10.0_706fb07ce74b1db611f19a02ad2ce784
   '@typescript-eslint/parser': 5.10.0_eslint@8.7.0+typescript@4.5.5
   '@vitejs/plugin-react': 1.1.4
@@ -1058,6 +1062,15 @@ packages:
     dependencies:
       redux: 4.1.2
     dev: false
+
+  /@types/redux-persist/4.3.1_redux@4.1.2:
+    resolution: {integrity: sha1-qkyHaFngvqUVXl95gOW4xGmdwuY=}
+    deprecated: This is a stub types definition for redux-persist (https://github.com/rt2zz/redux-persist). redux-persist provides its own type definitions, so you don't need @types/redux-persist installed!
+    dependencies:
+      redux-persist: 6.0.0_redux@4.1.2
+    transitivePeerDependencies:
+      - redux
+    dev: true
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
@@ -2708,6 +2721,13 @@ packages:
     dependencies:
       deep-diff: 0.3.8
     dev: false
+
+  /redux-persist/6.0.0_redux@4.1.2:
+    resolution: {integrity: sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==}
+    peerDependencies:
+      redux: '>4.0.0'
+    dependencies:
+      redux: 4.1.2
 
   /redux/4.1.2:
     resolution: {integrity: sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==}
