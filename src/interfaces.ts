@@ -1,11 +1,11 @@
-export interface UserWithId {
+interface UserWithId {
   id: string;
   displayName: string;
   email: string;
   createdAt: string;
 }
 
-export interface IItem {
+interface IItem {
   id?: number;
   key?: number;
   name: string;
@@ -14,7 +14,15 @@ export interface IItem {
   quantity: number;
 }
 
-export interface IState {
+interface IMenuItemProps {
+  title: string;
+  imageUrl: string;
+  id?: number;
+  size?: string;
+  linkUrl: string;
+}
+
+interface IState {
   user: {
     currentUser: UserWithId | null;
   };
@@ -22,4 +30,7 @@ export interface IState {
     hidden: boolean;
     cartItems: IItem[];
   };
+  directory: { sections: IMenuItemProps[] };
 }
+
+export type { UserWithId, IItem, IMenuItemProps, IState };
