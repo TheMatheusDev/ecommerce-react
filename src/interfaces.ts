@@ -1,3 +1,5 @@
+import ShopData from './redux/shop/Shop.data';
+
 interface UserWithId {
   id: string;
   displayName: string;
@@ -22,6 +24,8 @@ interface IMenuItemProps {
   linkUrl: string;
 }
 
+type collections = ReturnType<() => typeof ShopData>;
+
 interface IState {
   user: {
     currentUser: UserWithId | null;
@@ -31,6 +35,7 @@ interface IState {
     cartItems: IItem[];
   };
   directory: { sections: IMenuItemProps[] };
+  shop: { collections: collections[] };
 }
 
 export type { UserWithId, IItem, IMenuItemProps, IState };
