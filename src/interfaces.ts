@@ -16,7 +16,7 @@ interface IItem {
   quantity: number;
 }
 
-interface IMenuItemProps {
+interface ISections {
   title: string;
   imageUrl: string;
   id?: number;
@@ -34,8 +34,8 @@ interface IState {
     hidden: boolean;
     cartItems: IItem[];
   };
-  directory: { sections: IMenuItemProps[] };
+  directory: { sections: ISections[] };
   shop: { collections: collections[] };
 }
 
-export type { UserWithId, IItem, IMenuItemProps, IState };
+export type { UserWithId, IItem, ISections, IState };
