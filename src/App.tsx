@@ -11,6 +11,7 @@ import Header from './components/header/header';
 import LoginRegister from './pages/Login-register/Login-register';
 import './App.scss';
 import CheckoutPage from './pages/Checkout/Checkout';
+import CollectionOverview from './components/collections-overview/collections-overview';
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,8 @@ const App: FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
-        <Route path="/shop" element={<ShopPage />}></Route>
+        <Route path="/shop" element={<CollectionOverview />}></Route>
+        <Route path="/shop/*" element={<ShopPage />}></Route>
         <Route path="/signin" element={currentUser ? <Navigate replace to="/" /> : <LoginRegister />}></Route>
         <Route path="/checkout" element={<CheckoutPage />}></Route>
       </Routes>

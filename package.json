@@ -9,6 +9,7 @@
   "dependencies": {
     "@types/redux-logger": "^3.0.9",
     "firebase": "^9.6.3",
+    "lodash.memoize": "^4.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -20,6 +21,7 @@
     "reselect": "^4.1.5"
   },
   "devDependencies": {
+    "@types/lodash.memoize": "^4.1.6",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/redux-persist": "^4.3.1",

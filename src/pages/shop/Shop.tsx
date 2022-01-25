@@ -1,10 +1,15 @@
 import { FC } from 'react';
-import CollectionOverview from '../../components/collections-overview/collections-overview';
+import { Route, Routes } from 'react-router-dom';
+import CollectionPage from '../Collection/Collection';
 
-const ShopPage: FC = () => (
-  <div className="shop-page">
-    <CollectionOverview />
-  </div>
-);
+const ShopPage: FC = () => {
+  return (
+    <div className="shop-page">
+      <Routes>
+        <Route path=":collectionId" element={<CollectionPage />} />
+      </Routes>
+    </div>
+  );
+};
 
 export default ShopPage;

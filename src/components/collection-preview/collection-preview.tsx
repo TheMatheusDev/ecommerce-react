@@ -1,14 +1,10 @@
 import { FC } from 'react';
 import { IItem } from '../../interfaces';
+import { ICollections } from '../collections-overview/collections-overview';
 import CollectionItem from '../collection-item/collection-item';
 import './collection-preview.scss';
 
-interface IProps {
-  title: string;
-  items: IItem[];
-}
-
-const CollectionPreview: FC<IProps> = ({ items, title }) => {
+const CollectionPreview: FC<ICollections> = ({ items, title }) => {
   return (
     <div className="collection-preview">
       <h1 className="title">{title}</h1>

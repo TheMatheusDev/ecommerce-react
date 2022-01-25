@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/lodash.memoize': ^4.1.6
   '@types/react': ^17.0.38
   '@types/react-dom': ^17.0.11
   '@types/redux-logger': ^3.0.9
@@ -12,6 +13,7 @@ specifiers:
   eslint-config-prettier: ^8.3.0
   eslint-plugin-react: ^7.28.0
   firebase: ^9.6.3
+  lodash.memoize: ^4.1.2
   react: ^17.0.2
   react-dom: ^17.0.2
   react-redux: ^7.2.6
@@ -29,6 +31,7 @@ specifiers:
 dependencies:
   '@types/redux-logger': 3.0.9
   firebase: 9.6.3
+  lodash.memoize: 4.1.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-redux: 7.2.6_react-dom@17.0.2+react@17.0.2
@@ -40,6 +43,7 @@ dependencies:
   reselect: 4.1.5
 
 devDependencies:
+  '@types/lodash.memoize': 4.1.6
   '@types/react': 17.0.38
   '@types/react-dom': 17.0.11
   '@types/redux-persist': 4.3.1_redux@4.1.2
@@ -1018,6 +1022,16 @@ packages:
 
   /@types/json-schema/7.0.9:
     resolution: {integrity: sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==}
+    dev: true
+
+  /@types/lodash.memoize/4.1.6:
+    resolution: {integrity: sha512-mYxjKiKzRadRJVClLKxS4wb3Iy9kzwJ1CkbyKiadVxejnswnRByyofmPMscFKscmYpl36BEEhCMPuWhA1R/1ZQ==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: true
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
     dev: true
 
   /@types/long/4.0.1:
@@ -2359,6 +2373,10 @@ packages:
 
   /lodash.camelcase/4.3.0:
     resolution: {integrity: sha1-soqmKIorn8ZRA1x3EfZathkDMaY=}
+    dev: false
+
+  /lodash.memoize/4.1.2:
+    resolution: {integrity: sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=}
     dev: false
 
   /lodash.merge/4.6.2:
