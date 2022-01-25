@@ -1,4 +1,4 @@
-import { UserWithId } from '../../App';
+import { UserWithId } from '../../interfaces';
 import { UserActionTypes, IUserAction } from './user.types';
 
 interface IState {

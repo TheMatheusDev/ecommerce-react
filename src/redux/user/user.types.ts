@@ -1,4 +1,4 @@
-import { UserWithId } from '../../App';
+import { UserWithId } from '../../interfaces';
 
 export interface IUserAction {
   type: string;
