@@ -2,10 +2,9 @@
   "name": "ecommerce-react",
   "version": "1.0.0",
   "engines": {
-    "engines": {
-      "npm": "8.x.x",
-      "node": ">=16.13.1"
-    },
+    "npm": "8.x.x",
+    "node": ">=16.13.1"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -28,6 +27,7 @@
   },
   "devDependencies": {
     "@types/lodash.memoize": "^4.1.6",
+    "@types/node": "^17.0.12",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/redux-persist": "^4.3.1",
